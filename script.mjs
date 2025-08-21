@@ -12,6 +12,10 @@ async function getUserData(id) {
     let website = "";
     let company = "";
     try{
+        if(isNaN(id)||id==undefined)
+        {
+            throw new Error("Not a valid Id")
+        }
         if (id >= 1 && id<= 10 && typeof id=='number') {
         const returneddb = await central(id);
         console.log(returneddb);
@@ -56,7 +60,7 @@ async function getUserData(id) {
 async function main(){
 let returnedData = {};
 
-returnedData =await getUserData(8);
+ returnedData =await getUserData(8);
 console.log("finaldata is", returnedData);
 }
 main();
